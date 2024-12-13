@@ -1,14 +1,18 @@
 import { content } from '@/app/utilities/content'
 import { notFound } from 'next/navigation'
 
-export default function SeasonPage({ params }: { params: { id: string } }) {
-  const seasonId = parseInt(params.id, 10)
+interface SeasonPageProps {
+  params: Promise<{ id: string }>
+}
+
+export default async function SeasonPage({ params }: SeasonPageProps) {
+  const { id } = await params
+  const seasonId = parseInt(id, 10)
   const season = content.find((s) => s.id === seasonId)
 
   if (!season) {
     return notFound()
   }
-
   return (
     <main className="min-h-screen bg-white pt-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
       <h1 className="text-4xl font-light text-gray-900 mb-4 text-center">

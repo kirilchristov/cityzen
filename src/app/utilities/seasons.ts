@@ -1,7 +1,7 @@
 export const seasons = [
   {
     id: 1,
-    title: 'Сезон 1: Предриемачество',
+    title: 'Сезон 1: Предприемачество',
     description: '',
     image: '/images/seasons/season1.png',
   },
